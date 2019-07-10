@@ -113,7 +113,7 @@ program scemi_pipes_tb;
 	endtask
 
 	/* For some screwedup reason a program block with initial completion
-	is triggering $finish */
+	is triggering $finish, so making sure initial never completes.. */
 	event   scemi_initialize_finish;
 
 	initial begin

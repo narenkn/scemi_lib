@@ -26,13 +26,13 @@ for WORD in "$@" ; do
 	fi;
 done
 
-\rm simv_*.daidir/.vcs.timestamp
+\rm -f simv_*.daidir/.vcs.timestamp svc_dut.f svc_tb.f
 
 \rm -rf csrc
-vcs -sverilog -o simv_dut +incdir+$REPO_PATH/scemi $REPO_PATH/scemi/scemi_pipes_dut.sv $testdir/*dut.sv -CFLAGS "-g -I$REPO_PATH/scemi -DSVC_DUT" $REPO_PATH/scemi/scemi_pipes.cc -debug_all
+vcs -full64 -sverilog -o simv_dut +incdir+../scemi ../scemi/scemi_pipes_dut.sv dut.sv -CFLAGS "-g -I../scemi -DSVC_DUT" ../scemi/scemi_pipes.cc -debug_access+all
 
 \rm -rf csrc
-vcs -sverilog -o simv_tb +incdir+$REPO_PATH/scemi $REPO_PATH/scemi/scemi_pipes_tb.sv $testdir/*tb.sv -CFLAGS "-g -I$REPO_PATH/scemi" $REPO_PATH/scemi/scemi_pipes.cc -debug_all
+vcs -full64 -sverilog -o simv_tb +incdir+../scemi ../scemi/scemi_pipes_tb.sv tb.sv -CFLAGS "-g -I../scemi" ../scemi/scemi_pipes.cc -debug_access+all
 
 mkfifo svc_dut.f svc_tb.f
 
@@ -40,8 +40,8 @@ if [ ! -f ./simv_dut -o ! -f ./simv_tb ] ; then
 	exit;
 fi
 
-./simv_tb > tb.log 2>&1 &
 ./simv_dut > dut.log 2>&1 &
+./simv_tb > tb.log 2>&1 &
 
 wait
 
