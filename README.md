@@ -11,11 +11,11 @@ Tested on unix machines with industry standard compilers & VCS compiler.
 
 
 ## Running the tests
+One test is present in _tests_ dir. Run commands are provided
 ```bash
 cd tests
-. run.sh
+bash run.sh
 ```
-
 
 ## Deployment
 
