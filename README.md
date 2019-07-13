@@ -7,8 +7,8 @@ The library could be used to send transactions between two or more simulations r
 ### Prerequisites
 Tested on unix machines with industry standard compilers & VCS compiler.
 
-### Installing
-
+### Video
+[Link](https://www.youtube.com/embed/qOtkPb75nx0)
 
 ## Running the tests
 One test is present in _tests_ dir. Run commands are provided
